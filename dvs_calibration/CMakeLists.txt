@@ -18,6 +18,12 @@ find_package(catkin REQUIRED COMPONENTS
 # find_package makes the ${..._INCLUDE_DIRS} ${..._LIBRARIES} variables we use later
 find_package(OpenCV 2 REQUIRED)
 find_package(Boost REQUIRED)
+find_package(Qt5Gui REQUIRED)
+find_package(Qt5Core REQUIRED)
+find_package(Qt5Widgets REQUIRED)
+find_package(Qt5Test REQUIRED)
+find_package(Qt5Concurrent REQUIRED)
+find_package(Qt5OpenGL REQUIRED)
 
 # export the dependencis of this package for who ever depends on us
 catkin_package(
@@ -70,23 +76,23 @@ target_link_libraries(mono
 # make the executable for STEREO
 #########################
 
-add_executable(stereo
-  src/stereo_node.cpp
-  src/stereo_dvs_calibration.cpp
-  src/dvs_calibration.cpp
-  src/board_detection.cpp
-  src/transition_map.cpp
-)
-
-# to build the executable we depend on other packets,
-# they need to be build beforehand, especially the messages
-add_dependencies(stereo ${catkin_EXPORTED_TARGETS})
-
-# link the executable to the necesarry libs
-target_link_libraries(stereo
-   ${catkin_LIBRARIES}
-   ${OpenCV_LIBRARIES}
-)
+# add_executable(stereo
+#   src/stereo_node.cpp
+#   src/stereo_dvs_calibration.cpp
+#   src/dvs_calibration.cpp
+#   src/board_detection.cpp
+#   src/transition_map.cpp
+# )
+#
+# # to build the executable we depend on other packets,
+# # they need to be build beforehand, especially the messages
+# add_dependencies(stereo ${catkin_EXPORTED_TARGETS})
+#
+# # link the executable to the necesarry libs
+# target_link_libraries(stereo
+#    ${catkin_LIBRARIES}
+#    ${OpenCV_LIBRARIES}
+# )
 
 
 #########################
