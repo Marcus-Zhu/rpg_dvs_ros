@@ -23,9 +23,10 @@
     <param name="enough_transitions_threshold" value="100" />
     <param name="minimum_transitions_threshold" value="30" />
 
-    <param name="dots_w" value="5"/>
+    <param name="pattern_search_timeout" value="5.0" />
+    <param name="dots_w" value="7"/>
     <param name="dots_h" value="5"/>
-    <param name="dot_distance" value="0.05"/>
+    <param name="dot_distance" value="0.3"/>
   </node>
 
   <node name="rqt_gui" pkg="rqt_gui" type="rqt_gui" args="--perspective-file $(find dvs_calibration_gui)/rqt/IntrinsicCalibration.perspective" />
