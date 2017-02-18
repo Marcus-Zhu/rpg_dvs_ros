@@ -40,7 +40,9 @@ void eventsCallback(const dvs_msgs::EventArray::ConstPtr& msg) {
     myfile << (int) msg->events[i].x << " ";
     myfile << (int) msg->events[i].y << " ";
     myfile << (int) msg->events[i].polarity << " ";
-    myfile << (msg->events[i].ts.toNSec()) << std::endl;
+	myfile << (msg->events[i].ts.sec) << " ";
+	myfile << (msg->events[i].ts.nsec) << std::endl;
+	// myfile << (msg->events[i].ts.toNSec()) << std::endl;
   }
 }
 
