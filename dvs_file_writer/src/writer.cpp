@@ -52,7 +52,7 @@ int main(int argc, char* argv[])
 
   ros::NodeHandle nh;
 
-  std::string file_name = std::string("events-" + currentDateTime() + ".txt");
+  std::string file_name = std::string("dvcmos-record/events-" + currentDateTime() + ".txt");
 
   myfile.open(file_name.c_str());
 
