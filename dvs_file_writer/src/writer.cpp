@@ -40,7 +40,9 @@ void eventsCallback(const dvs_msgs::EventArray::ConstPtr& msg) {
     myfile << (int) msg->events[i].x << " ";
     myfile << (int) msg->events[i].y << " ";
     myfile << (int) msg->events[i].polarity << " ";
-    myfile << (msg->events[i].ts.toNSec()/1000) << std::endl;
+	myfile << (msg->events[i].ts.sec) << " ";
+	myfile << (msg->events[i].ts.nsec) << std::endl;
+	// myfile << (msg->events[i].ts.toNSec()) << std::endl;
   }
 }
 
@@ -50,14 +52,15 @@ int main(int argc, char* argv[])
 
   ros::NodeHandle nh;
 
-  std::string file_name = std::string("events-" + currentDateTime() + ".txt");
+  std::string file_name = std::string("dvcmos-record/events-" + currentDateTime() + ".txt");
 
   myfile.open(file_name.c_str());
 
   ROS_INFO("Writing events to %s", file_name.c_str());
-  ros::Subscriber sub = nh.subscribe("dvs/events", 1000, eventsCallback);
+  ros::Subscriber sub = nh.subscribe("/dvs/events", 5000, eventsCallback);
 
-  ros::spin();
+  while(ros::ok())
+      ros::spin();
 
   myfile.close();
 

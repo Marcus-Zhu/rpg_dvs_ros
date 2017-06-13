@@ -1,0 +1,41 @@
+!!python/object/new:dynamic_reconfigure.encoding.Config
+dictitems:
+  Pr: 3
+  cas: 54
+  diff: 30153
+  diffOff: 132
+  diffOn: 482443
+  foll: 51
+  groups: !!python/object/new:dynamic_reconfigure.encoding.Config
+    dictitems:
+      Pr: 3
+      cas: 54
+      diff: 30153
+      diffOff: 132
+      diffOn: 482443
+      foll: 51
+      groups: !!python/object/new:dynamic_reconfigure.encoding.Config
+        state: []
+      id: 0
+      injGnd: 1108364
+      name: Default
+      parameters: !!python/object/new:dynamic_reconfigure.encoding.Config
+        state: []
+      parent: 0
+      puX: 8159221
+      puY: 16777215
+      refr: 6
+      req: 159147
+      reqPd: 16777215
+      state: true
+      streaming_rate: 30
+      type: ''
+    state: []
+  injGnd: 1108364
+  puX: 8159221
+  puY: 16777215
+  refr: 6
+  req: 159147
+  reqPd: 16777215
+  streaming_rate: 30
+state: []

@@ -1,22 +1,28 @@
 <launch>
   <!-- camera driver -->
   <node name="dvs_ros_driver" pkg="dvs_ros_driver" type="dvs_ros_driver">
-	<rosparam command="load" file="$(find dvs_ros_driver)/config/fast.yaml" />
+	<rosparam command="load" file="$(find dvs_ros_driver)/config/standard.yaml" />
   </node>
 
   <!-- visualization -->
-  <node name="dvs_renderer" pkg="dvs_renderer" type="dvs_renderer">
+  <node name="dvs_renderer" pkg="dvs_renderer" type="dvs_renderer" output="screen">
     <!-- <param name="display_method" value="grayscale"/> -->
     <param name="display_method" value="red-blue"/>
     <remap from="events" to="/dvs/events" />
     <remap from="camera_info" to="/dvs/camera_info" />
+    <!-- <remap from="image" to="dvs_rendering"/> -->
   </node>
 
   <!-- display -->
-  <node name="image_view" pkg="image_view" type="image_view">
+  <node name="dvs_view" pkg="image_view" type="image_view">
   	<remap from="image" to="dvs_rendering"/>
   </node>
-
+<!--   <node name="dvs_events_view" pkg="image_view" type="image_view">
+    <remap from="image" to="dvs_accumulated_events"/>
+  </node>
+  <node name="dvs_edge_view" pkg="image_view" type="image_view">
+    <remap from="image" to="dvs_accumulated_events_edges"/>
+  </node> -->
   <!-- configure -->
   <!-- <node name="rqt_reconfigure" pkg="rqt_reconfigure" type="rqt_reconfigure" /> -->
 

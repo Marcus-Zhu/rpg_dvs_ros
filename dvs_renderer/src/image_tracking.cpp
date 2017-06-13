@@ -147,6 +147,7 @@ void ImageTracking::render()
     while (i < images_.size() &&
         event.ts.toSec() > (images_[i-1].t.toSec()+images_[i].t.toSec())/2.) ++i;
 
+    std::cout << i << " " <<  images_.size() - 1 << std::endl;
     if (i >= images_.size() - 1)
       continue;
 
@@ -170,6 +171,7 @@ void ImageTracking::render()
     //update event map
     cv::Point2f p = v2[0];
     int x = cvRound(p.x), y = cvRound(p.y);
+    std::cout << x << " " << y << std::endl;
     if (x >= 0 && x < img_size.width && y >= 0 && y < img_size.height)
     {
       ++output_img.at<uint16_t>(cv::Point(x, y));
@@ -178,7 +180,7 @@ void ImageTracking::render()
 
   }
   //require minimum number of events
-  if (num_events < 10000) return;
+  // if (num_events < 10) return; // 10000
 
   cv::normalize(output_img, output_img, 0, 65535, cv::NORM_MINMAX);
 
